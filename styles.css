@@ -1,0 +1,462 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgba(10, 25, 47, 255);
+    color: #fff;
+    scroll-behavior: smooth; /* Comportamiento de desplazamiento suave */
+}
+
+/* Estilos para scrollbar en diferentes navegadores */
+
+/* Estilos para WebKit (Safari, Chrome, etc.) */
+::-webkit-scrollbar {
+    width: 15px; /* Ancho del scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(10, 25, 47, 0.8); /* Color de fondo del track (fondo detrás del thumb) */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0ff; /* Color del thumb (barra de desplazamiento) */
+    border-radius: 6px; /* Borde redondeado del thumb */
+}
+
+/* Estilos para Firefox */
+* {
+    scrollbar-width: thin; /* Ancho del scrollbar */
+    scrollbar-color: #0ff rgba(10, 25, 47, 0.8); /* Color del thumb y del track */
+}
+
+/* Para Firefox, ajuste específico con @-moz-document */
+@-moz-document url-prefix() {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #0ff rgba(10, 25, 47, 0.8);
+    }
+}
+
+/* Estilos de navegación */
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: -120px; /* Mueve el menú fuera de la vista inicialmente */
+    width: calc(100% + 70px); /* Ajusta el ancho para compensar el desplazamiento a la izquierda */
+    background-color: rgba(10, 25, 47, 0.9); /* Fondo semi-transparente */
+    padding: 2rem;
+    text-align: right;
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    backdrop-filter: blur(10px); /* Aplica un desenfoque al fondo */
+    -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con algunos navegadores */
+    
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    font-weight: bold;
+    color: rgb(255, 255, 255); /* Color original */
+    text-decoration: none; /* Sin subrayado por defecto */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+nav ul li a:hover {
+    color: rgb(0, 191, 255); /* Color al pasar el cursor */
+    text-shadow: 0 0 35px rgba(0, 191, 255, 1); /* Sombra al pasar el cursor */
+}
+
+header button {
+    margin-top: 1rem;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    background-color: #0ff;
+    border: none;
+    color: #000000;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0ff;
+}
+
+/* Estilos para el encabezado */
+header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; 
+}
+
+header .hero {
+    margin-top: -20px; /* Ajuste para alinear el contenido correctamente */
+    position: relative;
+    z-index: 1; /* Asegura que esté sobre el video de fondo */
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 9vw; /* Tamaño predeterminado para anchos grandes */
+    color: #0ff; /* Valor RGB */
+    text-shadow:  0 0 10px rgba(0, 191, 255, 0.8);
+    animation: blinkShadow 2s infinite; /* Animación que parpadea infinitamente */
+    
+}
+
+header h2 {
+    font-size: 5vw; /* Tamaño predeterminado para anchos grandes */
+    color: #0ff; /* Valor RGB */
+    text-shadow:  0 0 10px rgba(0, 191, 255, 0.8);
+    animation: blinkShadow 2s infinite; /* Animación que parpadea infinitamente */
+}
+@keyframes blinkShadow {
+    0%, 100% {
+      text-shadow: 0 0 70px rgba(0, 191, 255, 0.8); /* Estado inicial y final del brillo */
+    }
+    50% {
+      text-shadow: none; /* Estado intermedio sin sombra */
+    }
+}
+@media (max-width: 768px) {
+    /* Ajuste para dispositivos con ancho máximo de 768px, como teléfonos */
+    header h1 {
+        font-size: 13vw;
+    }
+    nav ul li a {
+        font-size: 2.1vw;
+    }
+    header h2 {
+        font-size: 9vw;
+    }
+
+    .menu-container {
+        flex-direction: column; /* Cambia la dirección del flexbox a columna en dispositivos móviles */
+    }
+
+    .parciales-columna {
+        order: 1; /* Cambia el orden para que aparezca debajo en dispositivos móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajuste adicional para dispositivos con ancho máximo de 480px */
+    header h1 {
+        font-size: 10vw;
+    }
+    nav ul li a {
+        font-size: 2.1vw;
+        
+    }
+    header h2 {
+        font-size: 10vw;
+    }
+    .parciales-columna {
+        
+    }
+    .parciales-columna { flex-direction: column; /* Cambia la dirección del flex para dispositivos pequeños */ align-items: center; /* Centra los elementos dentro de la columna */ gap: 0.5rem; /* Ajusta el espacio entre los elementos */ } .menu-column h3 { font-size: 1.2rem; /* Reduce el tamaño de la fuente */ } .menu-column button { width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */ font-size: 0.8rem; /* Ajusta el tamaño de la fuente del botón */ padding: 0.8rem 1rem; /* Ajusta el padding del botón */ min-width: unset; /* Quita el mínimo ancho */ } .menu-column button span { font-size: 0.5rem; /* Ajusta el tamaño de la fuente del texto del botón */ }
+}
+
+/* Estilos para la sección de menú */
+#menu {
+    padding: 2rem;
+    background-color: rgb(1, 1, 1); /* Color de fondo temporal */
+    margin-top: 5rem; /* Asegura que la sección de menú no esté oculta bajo la navegación fija */
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.texto-columna {
+    flex: 1;
+    text-align: justify;
+    padding: 1rem;
+}
+
+.texto-columna p {
+    text-align: center;
+    text-align: justify;
+    line-height: 150%;
+
+}
+
+.parciales-columna {
+    flex: 50px;
+    display: flex;
+    justify-content: space-around;
+    gap: 1.2rem;
+}
+
+.menu-column {
+    text-align: center;
+}
+
+.menu-column h3 {
+    font-size: 1.5rem;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.menu-column button {
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    margin: 1rem 0;
+    padding: 1rem 1rem;
+    background-color: #0ff;
+    border: none;
+    color: #000;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0ff;
+    min-width: 200px; /* Ajusta este valor según sea necesario */
+}
+
+.menu-column button span {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+/* Estilos para el footer */
+.e {
+    background-color: rgb(11, 9, 9); /* Color de fondo temporal */
+    /* Estilos adicionales para el footer según sea necesario */
+}
+.video-tv {
+    border: 10px solid #19e3b7; /* Borde negro */
+    box-shadow: 0 0 20px rgba(28, 47, 255, 0.861); /* Sombra para darle un efecto de profundidad */
+    display: block; /* Asegura que se comporte como un bloque */
+    margin: 20px auto; /* Centra el video horizontalmente */
+    max-width: 90%; /* Asegura que no exceda el ancho del contenedor */
+    padding: 0;
+    position: relative; /* Necesario para el padding en % */
+    padding-bottom: 50.56%; /* Relación de aspecto 16:9 */
+    height: 0.1%; /* Altura de 0 para usar padding-bottom */
+    border-radius: 6px;
+}
+
+.video-tv iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.logo{
+    width: 200px;
+    margin-top: -8.5px;
+    margin-right: 550px;
+
+}
+/*****************************************************************/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+
+
+.footer-distributed{
+  background: rgba(10, 25, 47, 0.9);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+  padding: 15px 50px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+  width: 40%;
+}
+
+
+.footer-distributed h3{
+  color:  #ffffff;
+  font: normal 36px 'Open Sans', cursive;
+  margin: 0;
+}
+
+.footer-distributed h3 span{
+  color:  lightseagreen;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+  color:  #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer-distributed .footer-links a{
+  display:inline-block;
+  line-height: 1.8;
+  font-weight:400;
+  text-decoration: none;
+  color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+  color:  #fff;
+  font-size: 17px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+  width: 35%;
+}
+
+.footer-distributed .footer-center i{
+  background-color:  #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+  display: inline-block;
+  color: #ffffff;
+  font-weight:400;
+  vertical-align: middle;
+  margin:0;
+}
+
+.footer-distributed .footer-center p span{
+  display:block;
+  font-weight: normal;
+  font-size:14px;
+  line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+  color:  lightseagreen;
+  text-decoration: none;;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight:300;
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+  width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+  line-height: 20px;
+  color:  #92999f;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+  display: block;
+  color:  #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+  margin-top: 25px;
+}
+
+.footer-distributed .footer-icons img{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+  .footer-distributed{
+    font: bold 14px sans-serif;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right{
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .footer-distributed .footer-center i{
+    margin-left: 0;
+  }
+
+}
